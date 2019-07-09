@@ -16,3 +16,14 @@
 
 - 伪元素 天生是行内元素，不可以设置 width * height ，天生是由内容撑起来的
     可以改变 display:block; position:absolute 可以设置宽高 自动设置为display:block;
+
+- background animation 复合属性
+    backgroun-position 使得背景图片位子的移动
+    animation 使得产生眨眼的效果
+    animation-delay 延迟
+    animation-druation 效果持续时间
+    animation-iteration-count 迭代的次数
+    animation-name 动作的名称
+
+- 适配属性 手机
+    @media only screen and (max-width:480px)
