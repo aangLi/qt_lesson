@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 以函数来创建类
+
+    let Phaser = { //对象字面量
+        
+       
+    };
+
+    // 函数可以被new 函数本身就是一个对象
+    Phaser.Game = function(width, height, selector, callback) {
+        console.log('构造函数');
+    }
+
+    Phaser.Game.protoTyp.getName = function() {
+        console.log('Game 的方法');
+    }
+
+    new Phaser.Game()
+</script>
+</html>
