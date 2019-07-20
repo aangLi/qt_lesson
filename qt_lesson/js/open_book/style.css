@@ -1,0 +1,81 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  overflow: hidden;
+  font: 100%/1.25 Helvetica, Arial;
+  color: #fff;
+  perspective: 1000px;
+  background-color: #444;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#444), to(#fff));
+}
+.book {
+  width: 300px;
+  height: 300px;
+  margin-top: -150px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: rotateX(60deg);
+  user-select: none;
+}
+.page {
+  width: 300px;
+  height: 300px;
+  padding: 1em;
+  position: absolute;
+  left: 0;
+  top: 0;
+  text-indent: 2em;
+}
+.front {
+  background-color: #d93e2d;
+}
+.back {
+  background-color: #fff;
+}
+.front-cover {
+  cursor: none;
+  transform-origin: 0 50%;
+  transform: rotateY(0deg);
+}
+.front-cover .back {
+  transform: translateZ(3px);
+  background-image: url("./images/user.jpg");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+.back-cover .back {
+  transform: translateZ(-3px);
+}
+.p3d {
+  transform-style: preserve-3d;
+}
+.flip {
+  transform: rotateY(-180deg);
+}
+.dino,
+.shadow {
+  width: 196px;
+  height: 132px;
+  position: absolute;
+  left: 60px;
+  top: 60px;
+  transform-origin: 0 100%;
+}
+.dino {
+  background: url("./images/user.jpg") no-repeat;
+  background-size: cover;
+}
+.shadow {
+  background-color: rgba(0,0,0,0.5);
+}

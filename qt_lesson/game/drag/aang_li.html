@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 动态的添加 canvas 800x600 callbacks -->
+    <div id="game">
+
+    </div>
+    <script>
+        // 一开始用分号，写架构的习惯，结束前面的所有代码
+    ;var AANG_LI = {}; // 命名空间
+    /**
+     * 作者：AANG_LI 时间：2019-7-19
+     * Game 游戏实例
+     * @params w:number 游戏区域宽度
+     * @params h:number 游戏区域高度
+     * @params selector:string 游戏区域
+     * @params callback:function 回调函数
+     * 
+    */
+    AANG_LI.Game = function(w, h, selector, callback) { 
+        
+        this.witdh = w;
+        this.height = h;
+        this.ele = document.querySelector(selector);
+        console.log(this.ele);
+        this.callback = callback;
+        this.init();
+        
+    }; // 类
+
+    /**
+     * 作者：AANG_LI 时间：2019-7-19
+     * 初始化
+     */
+    AANG_LI.Game.prototype.init = function() {
+        this.ele.style.width = this.witdh + 'px';
+        this.ele.style.height = this.height + 'px';
+
+        console.log(this.ele.style.witdh,this.ele.style.height);
+        this.ele.style.backgroundColor = 'green';
+        this.createCanvas();
+    }
+
+    /**
+     * 作者：AANG_LI 时间：2019-7-19
+     * 创建游戏空间
+     */
+    AANG_LI.Game.prototype.createCanvas = function() {
+
+    }
+
+    new AANG_LI.Game(800, 600, '#game', {});
+    </script>
+</body>
+</html>
