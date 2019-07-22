@@ -9,11 +9,17 @@ body {
   flex: 1;
 }
 .section-title {
-  font-size: 17px;
+  font-size: 24px;
   color: #000;
+  font-weight: bold;
 }
 .actor-list.section-title {
   padding-left: 0.4rem;
+}
+.section-content {
+  width: 100%;
+  padding: 0.3rem 0.3rem 0.1rem 0rem;
+  box-sizing: border-box;
 }
 header {
   height: 1.067rem;
@@ -156,6 +162,9 @@ header span {
 .page .movie-header .movie .movie-container .movie-detail p {
   margin-bottom: 0.14rem;
 }
+.page .movie-header .movie .operating {
+  padding-top: 0.4rem;
+}
 .page .movie-header .movie .operating div {
   border: 1px solid rgba(255,255,255,0.4);
   background-color: rgba(255,255,255,0.4);
@@ -182,15 +191,15 @@ header span {
 .page .movie-header .movie .operating .movie-mark img {
   width: 18px;
 }
-.page .section-seperate {
-  padding-top: 0.4rem;
-  margin-bottom: 0.3rem;
-}
 .page .section-extender {
   padding-left: 0.4rem;
   padding-right: 0.4rem;
 }
-.page .section-extender .text-expander__content.close {
+.page .section-seperate {
+  padding-top: 0.4rem;
+  margin-bottom: 0.3rem;
+}
+.page .section-seperate .text-expander__content.close {
   min-height: 65px;
   display: -webkit-box;
   overflow: hidden;
@@ -199,14 +208,14 @@ header span {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
 }
-.page .section-extender .text-expander__content.open {
+.page .section-seperate .text-expander__content.open {
   -webkit-line-clamp: 5555;
 }
-.page .section-extender .text-expander__button {
+.page .section-seperate .text-expander__button {
   height: 0.7rem;
   text-align: center;
 }
-.page .section-extender .text-expander__button .icon-chevron__down {
+.page .section-seperate .text-expander__button .icon-chevron__down {
   display: inline-block;
   width: 0.3rem;
   height: 0.3rem;
@@ -217,12 +226,10 @@ header span {
   box-sizing: border-box;
   transition: transform 0.5s;
 }
-.page .section-extender .text-expander__button .icon-chevron__down.up {
+.page .section-seperate .text-expander__button .icon-chevron__down.up {
   transform: rotateZ(-45deg);
 }
 .page .section-seperate .movie-celebrities {
-  width: 100%;
-  padding: 0.3rem 0.3rem 0.1rem 0.3rem;
   overflow-x: scroll;
   white-space: nowrap;
   box-sizing: border-box;
@@ -266,6 +273,56 @@ header span {
 .page .movie-booking .weui-flex .placeholder p {
   color: #bababa;
   font-size: 16px;
+  font: Arial;
+}
+.page .section-seperate .movie-pic {
+  overflow-x: scroll;
+  white-space: nowrap;
+}
+.page .section-seperate .movie-pic li {
+  display: inline-block;
+  padding: 0.04rem;
+}
+.page .section-seperate .movie-pic li img {
+  height: 2.382rem;
+}
+.page .section-seperate .movie-talking {
+  position: relative;
+  overflow: hidden;
+}
+.page .section-seperate .movie-talking .movie-talking__left {
+  display: inline-block;
+  left: 0;
+}
+.page .section-seperate .movie-talking .movie-talking__right {
+  float: right;
+  right: 0;
+}
+.page .section-seperate .movie-btn {
+  background-color: #f00;
+  border: none;
+  padding: 0.2rem 0.4rem;
+  box-sizing: border-box;
+  border-radius: 20px;
+}
+.page .section-seperate .movie-btn p {
+  font-size: 20px;
+  color: #fff;
+  font-weight: 550;
+}
+.page .section-seperate li {
+  display: inline-block;
+  padding: 0.04rem;
+}
+.page .section-seperate li .movie-btn {
+  background-color: #fff;
+  display: inline-block;
+  border: 1.5px solid #808080;
+}
+.page .section-seperate li .movie-btn p {
+  font-size: 20px;
+  color: #000;
+  font-weight: 300;
 }
 .page #toast {
   display: none;

@@ -22,7 +22,8 @@
             $('.text-expander__content p').html(res.data.desc);
             console.log($('.text-expander__content p').html(res.data.desc))
             celebrity(res.data.person);
-            booking(res.data.booking);      
+            booking(res.data.booking);
+            moviePic(res.data.pictures);
         }
     });
     function star(e) {
@@ -64,6 +65,30 @@
         $('#ranking').html(e.ranking);
         $('#booking-week').html(e.bookingWeek);
         $('#booking-total').html(e.bookingTotal);
+    }
+
+    // 演员和剧照
+    function moviePic(e) {
+        for (let n of e) {
+            $('.movie-pic').append(`
+            <li>
+                <img src="${n}" alt="">
+            </li>
+            `);
+        }
+    }
+
+    // 评价
+    function movieTalking(e) {
+        for (let n of e) {
+            $('#movie-btn').append(
+                `<li>
+                <button class="movie-btn">
+                    <p>${n}</p>
+                </button>
+            </li>`
+            )
+        }
     }
 })()
 

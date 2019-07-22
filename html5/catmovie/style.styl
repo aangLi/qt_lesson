@@ -9,10 +9,16 @@ html,body
     flex:1
 
 .section-title
-    font-size: 17px
+    font-size: 24px
     color: #000000
+    font-weight: bold
 .actor-list.section-title
     padding-left 0.4rem
+
+.section-content
+    width 100%
+    padding .3rem .3rem .1rem 0rem
+    box-sizing: border-box
 
 header
     height 1.067rem
@@ -133,7 +139,7 @@ header
                     div,p
                         margin-bottom: 0.14rem
             .operating
-                
+                padding-top: 0.4rem
                 div
                     border: 1px solid  rgba(255,255,255,0.4)
                     background-color: rgba(255,255,255,0.4)
@@ -157,14 +163,14 @@ header
                 .movie-mark
                     img
                         width 18px
+    // border-top 1px solid $bd_color
+    .section-extender
+        padding-left: 0.4rem
+        padding-right: 0.4rem
     // id 选择器的权重比 class 高 !important 权重最高
     .section-seperate
         padding-top: 0.4rem
         margin-bottom 0.3rem
-        // border-top 1px solid $bd_color
-    .section-extender
-        padding-left: 0.4rem
-        padding-right: 0.4rem
         .text-expander
             &__content.close
                 min-height 65px
@@ -196,8 +202,6 @@ header
                     transform rotateZ(-45deg)
     .section-seperate
         .movie-celebrities
-            width 100%
-            padding .3rem .3rem .1rem .3rem
             overflow-x: scroll
             white-space: nowrap
             box-sizing: border-box
@@ -233,6 +237,48 @@ header
                 p
                     color #bababa
                     font-size: 16px
+                    font: Arial
+    .section-seperate
+        .movie-pic
+            overflow-x: scroll
+            white-space nowrap
+            li
+                display inline-block
+                padding: 0.04rem
+                img
+                    height 2.382rem
+    
+    .section-seperate
+        .movie-talking
+            position relative
+            overflow hidden
+            .movie-talking__left
+                display inline-block
+                left 0            
+            .movie-talking__right
+                float right
+                right 0
+        .movie-btn
+            background-color red
+            border none
+            padding: 0.2rem 0.4rem
+            box-sizing: border-box
+            border-radius: 20px
+            & p
+                font-size: 20px
+                color: white
+                font-weight: 550
+        li
+            display inline-block
+            padding: 0.04rem
+            .movie-btn
+                background-color #fff
+                display inline-block
+                border: 1.5px solid grey 
+                p
+                    font-size: 20px
+                    color: black
+                    font-weight: 300      
     #toast
         display: none
     .toast-active
