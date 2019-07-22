@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Transition</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class='wrapper' data-key='wrapper'>AANG_LI</div>
+    <script>
+        const test = document.querySelector('.wrapper[data-key="wrapper"]');
+        console.log(1);
+        console.log(test.dataset.key);
+        let isActive = false;
+        test.addEventListener('click',function(){
+            isActive = !isActive;
+            if(isActive == true)
+            {
+                test.classList.add('active');
+            }
+            else{
+                test.classList.remove('active');
+            }
+        })
+    </script>
+</body>
+</html>

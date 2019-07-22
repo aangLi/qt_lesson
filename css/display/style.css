@@ -1,0 +1,89 @@
+/* css reset */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* 业务代码 */
+ul li{
+	list-style: none;
+	/* 行内元素不支持修改宽高的,行内块级元素可以修改宽高 */
+	/* 行内块级元素,换行会导致每个 li 之间存在空隙 */
+	/* display: inline-block; */
+	font-size: 14px;
+	flex: 0 0 200px;
+		
+	text-align: center;
+	line-height:50px;
+}
+.flex-items{
+	/* font-size: 0px; */
+	width: 300px;
+	height: 300px;
+	display: flex;
+	background-color:red;
+	/* 自动换行 */
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	/* align-content: center; */
+	/* flex-direction: column; */
+}
+.item{
+    width: 50px;
+	height: 50px;
+	/* 浮动会使得失去文档流 */
+	/* float: left; */
+}
+.item:nth-child(1){
+    background-color: red;
+}
+.item:nth-child(2){
+    background-color:yellow;
+}
+.item:nth-child(3){
+    background-color: blue;
+}
+
+/* 居中的另外一种方法 */
+/* margin:0 auto 水平居中 */
+/* margin-top:计算 */

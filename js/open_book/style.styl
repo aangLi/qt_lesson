@@ -1,0 +1,91 @@
+// css reset
+*
+    margin 0
+    padding 0
+    border 0
+    //inherit 继承
+    font: inherit
+    // y轴方向上的对齐
+    vertical-align: baseline
+    // 防止它撑大，在使用padding的时候
+    box-sizing: border-box
+
+html,body
+    height  100%
+
+body
+    overflow: hidden
+    font: 100%/1.25 Helvetica,Arial
+    color: #ffffff
+    //透视度,人看屏幕的视角
+    perspective: 1000px
+    background-color: #444
+    background-image: -webkit-gradient(linear,left top ,left bottom, from(#444),to(#ffffff))
+    // background-image: -webkit-linear-gradient(top bottom,#444,white)
+    // background-image: linear-gradient(top bottom,#444,#999)
+
+.book
+    width 300px
+    height 300px
+    margin-top: -150px
+    position: absolute
+    left 50%
+    top 50%
+    transform: rotateX(60deg)
+    // 文本不能被选择
+    user-select none
+
+// 宽高100%只能继承父容器的
+.page
+    width 300px
+    height 300px
+    // 1rem 相当于根字体的大小 1em 相当于父容器的相对单位
+    padding 1em
+    position: absolute
+    left 0
+    top 0
+    text-indent: 2em
+
+.front
+    background-color #d93e2d
+
+.back
+    background-color #fff
+
+.front-cover
+    // 鼠标变为十字架
+    cursor none
+    transform-origin: 0 50%
+    transform: rotateY(0deg)
+
+.front-cover .back
+    transform: translateZ(3px)
+    background-image: url(./images/user.jpg)
+    background-repeat no-repeat
+    background-position 50% 50%
+    
+.back-cover .back
+    transform: translateZ(-3px)
+
+.p3d
+    transform-style: preserve-3d
+
+.flip
+    transform: rotateY(-180deg)
+
+.dino,.shadow
+    width 196px
+    height 132px
+    position: absolute
+    left 60px
+    top 60px
+    transform-origin: 0 100%
+
+.dino
+    background: url(./images/user.jpg) no-repeat
+    // cover 是以容器为核心，自动符合容器的大小
+    // contain 是以图片为核心，保持图片等比例的放在容器内，不会导致图片变形
+    background-size: cover
+
+.shadow
+    background-color rgba(0,0,0,0.5)
