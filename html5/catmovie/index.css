@@ -312,7 +312,7 @@ header span {
 }
 .page .section-seperate li {
   display: inline-block;
-  padding: 0.04rem;
+  padding: 0.15rem;
 }
 .page .section-seperate li .movie-btn {
   background-color: #fff;

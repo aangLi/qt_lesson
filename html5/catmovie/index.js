@@ -3,6 +3,16 @@
  */
 
 (function () {
+    const opts = {
+        'good':'好评',
+        'bad':'差评',
+        'dy':'点映',
+        'bought':'购票',
+        'author':'认证作者',
+        'sameCity':'同城'
+
+    };
+
     $.ajax({
         url: 'https://www.easy-mock.com/mock/5d2ed7bc1418505a5562ae26/movie/movie/name',
         type: 'get',
@@ -24,6 +34,8 @@
             celebrity(res.data.person);
             booking(res.data.booking);
             moviePic(res.data.pictures);
+            console.log(res.data.commentNum);
+            movieTalking(res.data.commentNum);
         }
     });
     function star(e) {
@@ -43,7 +55,7 @@
 
     // 演员表
     function celebrity(e) {
-        for (let n of e) {
+        for (let n in e) {
             $('.movie-celebrities').append(
                 `
                 <li>
@@ -80,11 +92,11 @@
 
     // 评价
     function movieTalking(e) {
-        for (let n of e) {
+        for (let n in e) {
             $('#movie-btn').append(
                 `<li>
                 <button class="movie-btn">
-                    <p>${n}</p>
+                    <p>${opts[n]} ${e[n]}</p>
                 </button>
             </li>`
             )
