@@ -32,21 +32,30 @@ const IMath = {}; //.namespace
 // console.log(IMath.max(...[2, 4, 5, 6]));
 
 
-var minEatingSpeed = function(piles, H = 8) {
+var minEatingSpeed = function (piles, H = 8) {
     let lo = 1, //min
-        hi = Math.max(...piles); //max
-    
-    while(lo <= hi) {
+        hi = Math.max(...piles),
+        temp; //max
+
+    while (lo <= hi - 1) {
+
         //提前退出
+        if (canEatAllBananas(piles, H, lo)) {
+            console.log(`可以被吃完   hi:${hi} + lo:${lo}`);
+            hi = lo;
+            lo = temp;
 
-        if (canEatAllBananas(piles, H, lo)){
-            return lo;
+        } else {
+            console.log(`不可以被吃完   hi:${hi} + lo:${lo}`);
+            temp = lo + 1;
+            if(lo == Math.floor((hi + lo) / 2)){
+                return hi;
+            }
+            lo = Math.floor((hi + lo) / 2);
         }
-
-        lo ++;
     }
 
-    return lo;
+    return Math.floor(hi);
 
 }
 
@@ -58,4 +67,8 @@ function canEatAllBananas(piles, H, lo) {
     return h <= H;
 }
 
-console.log(minEatingSpeed([3, 6, 7, 11], 5));
+
+console.log(minEatingSpeed([3,6,7,11],8))
+
+console.log(minEatingSpeed([190593446, 46966570, 58112906, 718695514, 467956628, 32868367, 774795598, 866489925, 99515980, 403797587, 236552660, 791498323, 261642291, 421618193, 656016520, 735154815, 42473162, 17218552, 130422486, 610624004, 263684205, 274273276, 86320038, 191161325, 144782805, 606503472, 137683203, 123723979, 313447910, 807728967, 795901753, 535110917, 818848819, 375034713, 390935126, 702086996, 746196272, 288093628, 674659573, 379407501, 517196534, 977676916, 916154034, 275038047, 411849904, 105284895, 310478426, 715812144, 481088151, 400006951, 193276729, 23673830, 622253684, 332587451, 287931061, 65207733, 505132344, 572989906],
+    532200648));
