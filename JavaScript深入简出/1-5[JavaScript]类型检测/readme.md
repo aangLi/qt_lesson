@@ -22,3 +22,20 @@
 1. 通过调用实例对象的constructor 的函数来验证
 2. 注意这种方式 constructor 很容易被改写，使用时需要小心
 3. person1.constructor = Person // true
+
+# null 与 undefined
+1. 通过 if 条件语句判断可以认为 null 和 undefined 是同类型的 返回 true
+2. 通过 typeof  instanceof Object.prototype.toString 三种方法都认为该两种类型是不同的
+
+# undefined
+- undefined 特殊的例子 在浏览器console的情况下
+    1. var eye
+    2. eye
+    3. return undefined
+    4. age
+    5. 报TypeError错误
+    6. typeof(eye) 与 typeof(age) 都返回 undefined
+    7. 方法 instanceof Object.prototpye.toString 都不支持 typeof(age) 类似的效果，也就是会报错
+
+# Boolean 
+1. Boolean() 函数会将 undefined null 类型的变量 自动转变为false 其余大部分会转化为 true
