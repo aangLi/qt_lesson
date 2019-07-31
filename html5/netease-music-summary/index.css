@@ -170,10 +170,89 @@ html,body{
     transform-origin: top right;
     background: url(//s5.music.126.net/static_public/5c21db8d4684556c72180904/juan3.1c58874dbcd7f233bf027e9332ea6d96.png) no-repeat;
 }
-.z-juanAni {
-    animation: juanAnimation .5s steps(1) reverse,
-    juanAnimation .5s steps(1) 1s forwards; 
+.swiper-slide-active .z-juanAni {
+    animation: juanAnimation .5s steps(1) 1s reverse,juanAnimation .5s steps(1) 1s forwards; 
     /* 直接跳到下一个阶段 */
+}
+
+.p-swiper {
+    opacity: 0;
+    transform: translateY(6px);
+}
+
+.swiper-slide-active .p-swiper {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 2.2s,transform 2s ease-in;
+
+}
+
+/* .mouse:hover + .p-swiper {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 2.2s,transform 2s ease-in;
+
+}
+
+.mouse {
+    border: 1px solid red;
+} */
+
+.cat__body { 
+    position: absolute;
+    top: 200px;
+    left: 140px;   
+    width: 125px;
+    height: 240px;
+    transform: rotate(-70deg);
+    background: url(http://s5.music.126.net/static_public/5c21db8d4684556c72180904/maoshenti.ad6177be5deba54a83a99ef58fe80047.png) no-repeat;
+}
+.cat__weiba {
+    position: absolute;
+    top: 125px;
+    left: 55px;
+    width: 70px;
+    height: 200px;
+    /* transform: rotate(-30deg); */
+    background: url(http://s5.music.126.net/static_public/5c21db8d4684556c72180904/maowei.cebc9c6d99173d07009465c700b0eb21.png) no-repeat;
+    animation: catAnimation 2s linear infinite;
+    transform-origin: 35px bottom;
+}
+.cat__hand {
+    position: absolute;
+    top: 290px;
+    left: 195px;
+    width: 45px;
+    height: 100px;
+    transform: rotate(-60deg);
+    z-index: -1;
+    background: url(http://s5.music.126.net/static_public/5c21db8d4684556c72180904/maozhua.35cbb00fc5856cf230d6a4e60cfdfc55.png) no-repeat;
+    animation: catAnimation1 2s linear infinite;
+    transform-origin: 15px 40px ;
+}
+
+@keyframes catAnimation {
+    0%,100% {
+        transform: rotate(0);
+    }
+    25% {
+        transform: rotate(10deg);
+    }
+    75% {
+        transform: rotate(-10deg);
+    }
+}
+
+@keyframes catAnimation1 {
+    0%,100% {
+        transform: rotate(-60deg);
+    }
+    25% {
+        transform: rotate(-50deg);
+    }
+    75% {
+        transform: rotate(-70deg);
+    }
 }
 
 @keyframes juanAnimation {
@@ -291,11 +370,75 @@ html,body{
 
 }
 
-@keyframes juanAnimation1 {
+/* @keyframes juanAnimation1 {
     0% {
         background-position: 0 0;
     }
     100% {
         background-position: -1449px 0;
     }
+} */
+
+.mainwrap {
+    position: absolute;
+    width: 486px;
+    height: 494px;
+    right: 0;
+    bottom: 0;
+    transform: scale(0.5);
+}
+.man {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: url(http://s5.music.126.net/static_public/5c21db8d4684556c72180904/man.fafe9d20caf92e672faf6cac0506c94b.png);
+}
+.shoubi {
+    position: absolute;
+    width: 200px;
+    height: 250px;
+    left: 30%;
+    top: -90px;
+    background: url(http://s5.music.126.net/static_public/5c21db8d4684556c72180904/shoubi.dfdeb7747a98b98266ff5b0713024c87.png);
+    animation: shoubiAnimation 1.3s steps(12) infinite;
+}
+@keyframes shoubiAnimation {
+    0%,100%{
+        background-position:  0 0;
+    }
+    50% {
+        background-position: 100% 0;
+    }
+}
+
+.swiper-slide-active .word {
+    filter: blur(10px);
+    display: inline-block;
+    width: 120px;
+    height: 120px;
+    background-size: 120px;
+    background-repeat: no-repeat;
+    animation: blurAppear 2s linear forwards;
+}
+@keyframes blurAppear {
+    0%{
+        filter: blur(10px);
+        transform: scale(.8);
+        opacity: 0;
+        transform: rotate(45deg);
+    }
+    100% {
+        filter: blur(0);
+        transform: scale(1);
+        opacity: 1;
+        transform: rotate(0);
+    }
+}
+span.word:nth-child(1) {
+    background-image: url(http://s5.music.126.net/static_public/5c21db8d4684556c72180904/word-005.fb23ac077f192198be71db00c07ea3a1.png);
+}
+span.word:nth-child(2) {
+    background-image: url(http://s5.music.126.net/static_public/5c21db8d4684556c72180904/word-006.742fab0bc19b5e0d3a1aea45bbbd785f.png);
 }
