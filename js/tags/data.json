@@ -1,0 +1,16 @@
+{
+    "students":[
+        {
+            "id":1,
+            "username":"刘磊"
+        },
+        {
+            "id":2,
+            "username":"AANG_LI"
+        },
+        {
+            "id":3,
+            "username":"阿良"
+        }
+    ]
+}
