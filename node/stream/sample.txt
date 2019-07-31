@@ -1,0 +1,15 @@
+hello world
+- 徐式伟 架构课
+CPU + 存储 + I/O
+sample.txt 存储器 => 内存之中
+输出到屏幕， 命令行
+CPU 指令 write => 存储器 流操作
+
+- require('fs/zlib') 模块化
+  require('./self)
+- pipe 建立管道 流操作的抽象
+  createReadStream
+  createWriteStream
+  pipe
+
+- 超越浏览器 node 后端
