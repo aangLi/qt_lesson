@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+    <!-- 背景图片 -->
+    <div id="wrapbg">
+        <!-- 开始标签 -->
+        <div id="headTitle">
+            <img src="./img/bird0.png" alt="" id="headBird">
+        </div>
+        <!-- 开始按钮 -->
+        <div id="startBtn"></div>
+        <!-- 草地1 -->
+        <div id="grassLand1"></div>
+        <!-- 草地2 -->
+        <div id="grassLand2"></div>
+        <!-- 结束游戏 -->
+        <div id="gameOver">
+        </div>
+    </div>
+    <script src="./js/bird.js"></script>
+    <script src="./js/baseObj.js"></script>
+    <script src="./js/block.js"></script>
+    <script src="./js/point.js"></script>
+    <script>
+        var jsWrapBg = document.getElementById('wrapbg');
+        var jsHeadTitle = document.getElementById('headTitle');
+        var jsGrassLand1 = document.getElementById('grassLand1');
+        var jsGrassLand2 = document.getElementById('grassLand2');
+        var jsHeadBird = document.getElementById('headBird');
+        var jsGameOver = document.getElementById('gameOver');
+        var blocksArr = []; // 用来存储 block 的数据
+        var blocksArrPoint = [];
+        var blockDistance = baseObj.randomNum(120, 150);
+        var scorce = new Point();
+        var score = 0;
+        // 让草地动起来
+        function landRun() {
+            if (jsGrassLand1.offsetLeft <= -343) {
+                jsGrassLand1.style.left = '343px';
+            }
+            if (jsGrassLand2.offsetLeft <= -343) {
+                jsGrassLand2.style.left = '343px';
+            }
+            jsGrassLand1.style.left = `${jsGrassLand1.offsetLeft - 2}px`
+            jsGrassLand2.style.left = `${jsGrassLand2.offsetLeft - 2}px`
+
+            // block 的更新
+            if (blocksArr.length) {
+                for (var i = 0; i < blocksArr.length; i++) {
+                    blocksArr[i].moveBlock();
+
+                    var x = baseObj.rectangleCrashExamine(blocksArr[i].downDivWrap, bird.div);
+                    var y = baseObj.rectangleCrashExamine(blocksArr[i].upDivWrap, bird.div);
+                    var z = bird.div.offsetTop >= 390;
+
+                    // 游戏结束
+                    if (x || y || z) {
+                        clearInterval(landTimer);
+                        bird.fallSpeed = 0;
+                        jsWrapBg.onclick = null;
+                        jsGameOver.classList.add('show');
+                    }
+
+
+                }
+
+                // 实时的更新 block
+                if (blocksArr[blocksArr.length - 1].downDivWrap.offsetLeft < (450 - blockDistance)) {
+                    var newBlock = new Block();
+                    newBlock.createBlock();
+                    blocksArr.push(newBlock);
+                    blocksArrPoint.push(newBlock);
+                }
+
+                // 没有用了的 block 不需要再进行 计时器操作
+                if (blocksArr[0].downDivWrap.offsetLeft < -62 && blocksArr[0].upDivWrap.offsetLeft < -62) {
+                    blocksArr.shift();
+                }
+
+                // 分数的实时更新
+                if (blocksArrPoint.length) {
+                    var pd = baseObj.rectanglePassExamine(blocksArrPoint[0].downDivWrap, bird.div);
+                    var pu = baseObj.rectanglePassExamine(blocksArrPoint[0].upDivWrap, bird.div);
+                    if (pd && pu) {
+                        score ++;
+                        scorce.init(score);
+                        blocksArrPoint.shift();
+                    }
+                }
+            }
+        }
+
+
+        var landTimer = setInterval(landRun, 30);
+        // 让标题浮动
+        var Y = 3;
+        var index = 0;
+        var imgArr = ['img/bird0.png', 'img/bird1.png'];
+        // 利用帧动画的原理做出小鸟摆动翅膀的原理
+        function headWave() {
+            Y *= -1;
+            jsHeadTitle.style.top = jsHeadTitle.offsetTop + Y + 'px';
+            jsHeadBird.src = imgArr[index++];
+
+            if (index === 2) {
+                index = 0;
+            }
+        }
+        var headWaveTimer = setInterval(headWave, 200);
+
+        var jsStartBtn = document.getElementById('startBtn');
+        jsStartBtn.onclick = function () {
+            // 隐藏标题
+            jsHeadTitle.style.display = 'none';
+            jsStartBtn.style.display = 'none';
+            clearInterval(headWaveTimer);
+            // 小鸟部分
+            bird.showBird(jsWrapBg); // 把小鸟插入到页面中
+            bird.flyBird(); // 控制小鸟飞行下落
+            bird.wingWave(); // 控制小鸟翅膀的煽动
+            jsWrapBg.onclick = function () {
+                bird.fallSpeed = -8;
+            }
+            // 管道部分
+            var b = new Block();
+            b.createBlock();
+
+            blocksArr.push(b);
+            blocksArrPoint.push(b);
+            scorce.init(score);
+
+        }
+
+
+    </script>
+</body>
+
+</html>
