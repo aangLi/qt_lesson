@@ -8,7 +8,7 @@
 1. 渐变角度 默认角度为 to bottom
 2. 0deg 为 to top
 3. 180deg 为 to bottom
-4. 渐变线 有向线
+4. 渐变线 有向线 在中间 可以通过调试角度来构造不同的颜色效果
 
 ## 适配
 1. transform: scale(0.5);

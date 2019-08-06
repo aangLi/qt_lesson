@@ -191,6 +191,9 @@ header span {
 .page .movie-header .movie .operating .movie-mark img {
   width: 18px;
 }
+.page .section-seperate1 {
+  padding: 0.4rem;
+}
 .page .section-extender {
   padding-left: 0.4rem;
   padding-right: 0.4rem;
@@ -286,41 +289,41 @@ header span {
 .page .section-seperate .movie-pic li img {
   height: 2.382rem;
 }
-.page .section-seperate .movie-talking {
+.page .section-seperate1 .movie-talking {
   position: relative;
   overflow: hidden;
 }
-.page .section-seperate .movie-talking .movie-talking__left {
+.page .section-seperate1 .movie-talking .movie-talking__left {
   display: inline-block;
   left: 0;
 }
-.page .section-seperate .movie-talking .movie-talking__right {
+.page .section-seperate1 .movie-talking .movie-talking__right {
   float: right;
   right: 0;
 }
-.page .section-seperate .movie-btn {
+.page .section-seperate1 .movie-btn {
   background-color: #f00;
   border: none;
   padding: 0.2rem 0.4rem;
   box-sizing: border-box;
   border-radius: 20px;
 }
-.page .section-seperate .movie-btn p {
+.page .section-seperate1 .movie-btn p {
   font-size: 20px;
   color: #fff;
   font-weight: 550;
 }
-.page .section-seperate li {
+.page .section-seperate1 li {
   display: inline-block;
-  padding: 0.15rem;
+  padding: 0.134rem;
 }
-.page .section-seperate li .movie-btn {
+.page .section-seperate1 li .movie-btn {
   background-color: #fff;
   display: inline-block;
   border: 1.5px solid #808080;
 }
-.page .section-seperate li .movie-btn p {
-  font-size: 20px;
+.page .section-seperate1 li .movie-btn p {
+  font-size: 17px;
   color: #000;
   font-weight: 300;
 }

@@ -2,7 +2,8 @@
  * 
  */
 
-(function () {
+(
+    function () {
     const opts = {
         'good':'好评',
         'bad':'差评',

@@ -36,10 +36,8 @@ var minEatingSpeed = function (piles, H = 8) {
     let lo = 1, //min
         hi = Math.max(...piles),
         temp; //max
-
     while (lo <= hi - 1) {
-
-        //提前退出
+        
         if (canEatAllBananas(piles, H, lo)) {
             console.log(`可以被吃完   hi:${hi} + lo:${lo}`);
             hi = lo;
@@ -48,9 +46,11 @@ var minEatingSpeed = function (piles, H = 8) {
         } else {
             console.log(`不可以被吃完   hi:${hi} + lo:${lo}`);
             temp = lo + 1;
+            // 提前退出，防止产生无限循环的情况 例如 实例一 minEatingSpeed([3,6,7,11],8)
             if(lo == Math.floor((hi + lo) / 2)){
                 return hi;
             }
+            // 模拟C语言情况下的整数的四舍五入
             lo = Math.floor((hi + lo) / 2);
         }
     }
@@ -59,6 +59,7 @@ var minEatingSpeed = function (piles, H = 8) {
 
 }
 
+// 查找是否能吃完
 function canEatAllBananas(piles, H, lo) {
     let h = 0;
     for (let pile of piles) {

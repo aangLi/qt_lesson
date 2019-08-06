@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Snake</title>
+    <style>
+        /* .welcome {
+            /* position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50% ,-50%); */
+            /* font-size: 60px;
+            text-align: center;
+            height: 100vh;
+            line-height: 100vh;
+        }
+
+        .hideWelcome.welcome {
+            transform: translate(-6px,-6px);
+            opacity: 0;
+            transition: all linear 1.5s;
+        }  */
+        body {
+            /* vertical-align: center; */
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <img onload="imgLoaed()" src="http://e0.ifengimg.com/12/2019/0728/494EF7CBAB5DD0A75D6F65A501C2D7AB1CE4F102_size23_w640_h360.jpeg">
+    <div class="welcome">
+        Welcome to Snake!
+    </div> -->
+    <canvas id="gameCanvas" width="300" height="300"></canvas>
+
+    <script src="index.js"></script>
+    <script>
+        // js 执行的最佳时机
+        var gameCanvas = document.getElementById('gameCanvas');
+        console.log(gameCanvas);
+        var ctx = gameCanvas.getContext('2d');
+
+
+        Snake.init(); // 初始化
+        Snake.drawSnake(); // 画蛇
+    </script>
+
+    <!-- <script>
+        document.addEventListener('DOMContentLoaded',() => {
+            console.log('页面DOM基本完成');
+        });
+
+        function imgLoaed() {
+            console.log('哪吒来了');
+        }
+        /**
+         * 设置隐藏动画效果
+         * 在动画效果消失时，发动display：none
+        */
+        function hideWelcome() {
+            console.log('隐藏welcome')
+
+            let welcome = document.querySelector('.welcome');
+            welcome.classList.add('hideWelcome');
+            setTimeout(() => {
+                console.log('display:none');
+                welcome.style.display = 'none';
+            }, 2000);
+        }
+
+        /**
+         * 高阶函数，参数为函数
+         * 加载资源
+         * 然后执行fn() 
+        */
+        const loadAssets = (fn) => {
+            setTimeout(() => {
+                console.log('资源加载完毕');
+                fn();
+            }, 1000);
+        }
+        // 资源加载完成
+        window.onload = () => {
+            console.log('页面资源加载完毕');
+            // 加载完成后，hideWelcome，代码执行顺序和编写顺序不一致
+            // loadAssets(hideWelcome);
+            loadAssets(hideWelcome);
+        }
+    </script> -->
+</body>
+
+</html>

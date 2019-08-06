@@ -39,3 +39,4 @@
 
 # Boolean 
 1. Boolean() 函数会将 undefined null 类型的变量 自动转变为false 其余大部分会转化为 true
+

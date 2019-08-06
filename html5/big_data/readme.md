@@ -7,3 +7,12 @@
 - 分页
     1. ?limit= 20&page=1 过去式
     2. html5 来实现
+    3. http 是超文本传输协议 文件太大，分几次，等时间长，对大数据做分页
+- 服务器的状态码
+    1. 首次访问 200
+    2. 再次访问 页面没有被修改 则为 304 浏览器具有缓存的能力
+
+- 得益于ES6 的array.FROM({LENGTH: N}, (V,K) => `新闻${}`)  前端模拟大数据
+- 按页分割 再次复用 ARRAY.FROM(
+    {LENGTH: Math.ceil(arr.length/size), (v,k) => Array.from()}
+)
