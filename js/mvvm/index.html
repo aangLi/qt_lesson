@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MVVM</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" id="txt" />
+        <p id="show-txt"></p>
+    </div>
+    <script>
+        // 这个页面(静态)的数据(data)核心
+        // 数据界面的双向绑定
+        // 函数封装的思维，大于10 行的代码请封装函数，每个函数只做一件事情，复用
+        const obj = {
+            txt: 'AANG_LI'
+        }
+
+        Object.defineProperty(obj, 'txt', {
+            get: function () {
+                console.log('获得属性')
+                return obj;
+            },
+            set: function (newValue) {
+                console.log('设置属性');
+                document.getElementById('show-txt')
+                    .innerText = newValue;
+                document.getElementById('txt')
+                    .value = newValue;
+                return newValue;
+            }
+        });
+        
+        document.getElementById('txt')
+            .addEventListener('keyup', function (e) {
+                obj.txt = e.target.value;
+            })
+
+        // 值和显示的双向绑定
+        // const obj = {
+        //     txt: 'AANG_LI'
+        // };
+        // const oInput = document.getElementById('txt');
+        // const txtEle = document.getElementById('show-txt');
+
+        // oInput.addEventListener('input', function () {
+        //     txtEle.innerHTML = this.value;
+        //     obj.txt = txtEle.innerHTML;
+        // });
+
+        // function init() {
+        //     changeText();
+        //     setTimeout(() => {
+        //         obj.txt = '甘地';
+        //         changeText();
+        //     }, 1000);
+        // }
+
+        // function changeText() {
+        //     oInput.value = obj.txt;
+        //     txtEle.innerText = obj.txt;
+        // }
+        // init();
+    </script>
+</body>
+
+</html>
