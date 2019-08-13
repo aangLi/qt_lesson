@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Foo(a) {
+            this.a = a;
+        }
+
+        Foo.prototype.sayA = function() {
+            console.log('sayA' + this.a);
+        }
+
+        var fooObj = new Foo(1);
+
+        function bar(a, a) {
+            // Array 是一个 js 内置的构造函数
+
+            console.log(a,a,arguments);
+            // a = Array.from(arguments);
+            let bbb = Array.prototype.slice.call(arguments);
+            console.log(a.forEach(element => {
+                console.log(element);
+            }))
+        }   
+        bar (1,2);
+        const bar_arrow = (b, a) => {
+            return 123;
+        }
+        bar_arrow(3,4);
+
+
+        /**
+         * 扩展数组上的方法。
+         */
+        let arr = [1, 2, 3, 4];
+        console.log()
+        Array.prototype.reverseJoin = function() {
+            //
+            // 数组 reverse Join
+            let arr = this;
+            return arr.reverse().join();
+        }
+    </script>
+</body>
+</html>
