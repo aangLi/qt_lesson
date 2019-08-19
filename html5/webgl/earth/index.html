@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Earth</title>
+</head>
+
+<body>
+    <!-- 录像机 -->
+    <canvas id="webglcanvas">
+
+    </canvas>
+    <script src="https://cdn.bootcss.com/three.js/r83/three.min.js"></script>
+    <script>
+
+        var canvas, // 3D 容器
+            camera, // 相机
+            scene, // 场景 拜访背景， 人物上场
+            group,  // 
+            renderer; // 输出
+        var mouseX = 0, mouseY = 0;
+        init();
+        animate();
+        canvas.addEventListener('mousedown', function (event) {
+            //    console.log(event);
+            mouseX = event.clientX;
+            mouseY = event.clientY;
+        })
+
+        canvas.addEventListener('mousemove', function () {
+            console.log()
+            group.rotation.x += event.clientX - mouseX;
+            group.rotation.y += event.clientY - mouseY;
+            mouseX = event.clientX;
+            mouseY = event.clientY;
+        })
+
+        function init() {
+            canvas = document.getElementById('webglcanvas');
+            // canvas.clientHeight = window.innerHeight;
+            // canvas.clientWidth = window.innerWidth;
+
+            // degree, 拍摄比例, 拍摄范围（1，2000）, 
+            // 3D 世界是 Camera 拍出来的
+            camera = new THREE.PerspectiveCamera(60,
+                window.innerWidth / window.innerHeight,
+                1, 2000);
+
+            // 正前方
+            camera.position.z = 500;
+
+            // 场景
+            scene = new THREE.Scene();
+            scene.background = new THREE.Color(0xffffff);
+
+            // 分组
+            group = new THREE.Group();
+
+            scene.add(group);
+            // 图片加载进来
+            var loader = new THREE.TextureLoader();
+            loader.load('./image/land_ocean_ice_cloud_2048.jpg', function (textrue) {
+
+                // Shape 球体
+                var gemometry = new THREE.SphereGeometry(200, 20, 20);
+
+                // 贴图
+                var material = new THREE.MeshBasicMaterial({
+                    map: textrue
+                });
+
+                // 结合 两者
+                var mesh = new THREE.Mesh(gemometry, material);
+
+                // 加入到 group 中
+                group.add(mesh);
+            });
+
+            // 渲染器 openGL web 端的实现
+            renderer = new THREE.WebGLRenderer({
+                canvas: canvas,
+                antialias: true // 抗锯齿
+            })
+
+            // 默认是 300 300
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+
+        function animate() {
+
+            // 每秒 60 帧
+            requestAnimationFrame(animate);
+            render()
+
+        }
+
+        function render() {
+            camera.lookAt(scene.position);
+            renderer.render(scene, camera);
+
+        }
+    </script>
+</body>
+
+</html>
