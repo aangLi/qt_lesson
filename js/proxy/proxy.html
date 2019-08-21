@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Proxy</title>
+</head>
+<body>
+    <script>
+        let handler = {
+            get(target, key) {
+                console.log('getting ' + key);
+                return target[key];
+            },
+            set(target, key, newValue) {
+                console.log('setting ' + key + ' : ' + newValue);
+                target[key] = newValue;
+            }
+        }
+
+        let target = {
+            name: 'Tom',
+            age: 24
+        }
+
+        let proxy = new Proxy(target, handler);
+        console.log(proxy.name);
+        proxy.name = 1;
+
+        let targetEpt = {};
+        let proxyEpt = new Proxy(target, handler);
+
+        console.log(proxyEpt.name);
+        proxy.name = 1;
+        console.log(proxyEpt.name);
+
+    </script>
+</body>
+</html>
