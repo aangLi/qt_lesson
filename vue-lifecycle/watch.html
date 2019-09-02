@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Watch</title>
+</head>
+<body>
+    <div id="app">
+        <div class="temperature">
+            {{temperature}}
+        </div>
+        <div class="suggest">
+            {{suggest}}
+        </div>
+        <div class="btn">
+            <button @click='add'>add</button>
+            <button @click='reduce'>reduce</button>
+        </div>
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    temperature: 27,
+                    suggest: '短袖'
+                }
+            },
+            methods: {
+                add() {
+                    this.temperature += 5;
+                },
+                reduce() {
+                    this.temperature -= 5;
+                }
+            },
+            // watch: {
+            //     temperature: {
+            //         handler(newTemperature, oldTemperature) {
+            //             console.log(newTemperature, oldTemperature);
+            //             if (newTemperature >= 26) {
+            //                 this.suggest = '短袖';
+            //             } else if (newTemperature <26 && newTemperature > 0) {
+            //                 this.suggest = '外套';
+            //             } else {
+            //                 this.suggest = '羽绒衣';
+            //             }
+            //         },
+            //         immediate: true,
+            //         deep: true
+            //     }
+            // }
+        })
+        
+        app.$watch('temperature', function(newVal, oldVal) {
+            
+        })
+    </script>
+</body>
+</html>
