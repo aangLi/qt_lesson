@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>prototype-extends</title>
+</head>
+<body>
+  <script>
+    function Go () {
+      this.a = [];
+    }
+    // Go.prototype.a = 2;
+    Go.prototype.change = function () {
+      this.a.push(1);
+    }
+    var obj = new Go();
+
+    // new 先构造一个对象
+    // 处理了一下属性 prototype 
+    // 返回一个对象
+
+    console.log(obj);
+    // var obj = {
+    //   a: 1,
+    //   __proto__: {
+    //     a: 2
+    //   }
+    // }
+    // obj.__proto__ === Go.prototype
+
+    function Child1 () {}
+    Child1.prototype = new Go();
+    function Child2 () {}
+    Child2.prototype = new Go();
+
+    // var child1 = new Child1();
+    // var child2 = new Child1();
+
+    var child1 = new Child1();
+    child1.change();
+    var child2 = new Child2();
+    setTimeout(() => {
+      console.log(child2.a)
+    }, 1000);
+    
+  </script>
+</body>
+</html>
