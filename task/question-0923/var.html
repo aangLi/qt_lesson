@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    console.log(a);
+    var a = 10;
+
+    // var 声明 会将值提升到最顶部
+    // var a
+    // console.log(a);
+    // a = 10;
+
+    function a () {
+      console.log(123);
+    }
+    
+    console.log(a);
+    // function 声明 和 赋值 都会提升
+
+    // 函数声明
+    foo1()
+    function foo1() {} // 可行
+
+    // 函数表达式
+    foo2()
+    var foo2 = function () {} // 不可行
+  </script>
+</body>
+</html>
