@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function *test () {
+      console.log('start1');
+      let a = yield 'val';
+      let c;
+      console.log(a);
+      console.log('start2');
+      let b = yield 123;
+      console.log('start2');
+      console.log(b);
+      console.log('end');
+    }
+    // const obj = test()
+    // console.log(obj.next(1)) // 给他上一个用了yield 的参数赋值
+    // console.log(obj.next(2))
+    // console.log(obj.next(3))
+    // tj co autoRun 就是 类似 co 的东西
+    function autoRun (generateFun) {
+      let genObj = generateFun();
+      let g = genObj.next();
+      let value = g.value;
+      while(!g.done) {
+        g = genObj.next(value);
+        value = g.value;
+      }
+    }
+
+    autoRun(test)
+  </script>
+</body>
+</html>
