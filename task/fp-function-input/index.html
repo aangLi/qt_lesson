@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="https://cdn.bootcss.com/lodash.js/4.17.15/lodash.min.js"></script>
+  <script>
+    let arr = [1, 2, 3]
+    // 无形参
+    console.log(arr.map(parseInt))
+    console.log(arr.map((item) => parseInt(item, 10)))
+    // parseInt 固定一个参数 10
+    // 某一类函数 固定一个参数
+    const add = (a, b, c) => a + b + c
+    console.log(add(1,2,3))
+    const curryAdd = _.curry(add)
+
+    console.log( curryAdd(1))
+    // console.log('-----------------------')
+
+
+    // 颗粒化
+    // 非一次性传输， 分批次传输
+    // 偏应用 add10 就是一个偏函数
+    const add10 = add.bind(null, 10)
+    console.log(add10(1, 2))
+    console.log(add10(1, 3))
+    // high order function
+    // 输入一个函数  输出一个函数  满足其中任意一个条件  则满足
+    function hof(fn) {
+      // 所以函数都有的一个过程
+      return function (){
+
+      }
+    }
+
+    Function.prototype.bindRight = function (thisObj, ...args) {
+      const fn = this
+      const length = fn.length
+      // console.log(this)
+      return function(...args2) {
+        let arsSlice = args2.slice(0, length - args.length -1)
+        console.log(arsSlice + thisObj + fn)
+        return fn.apply(thisObj, [...arsSlice, ...args])
+      }
+    }
+
+    const add20 = add.bindRight(null,20);
+    console.log(add20(1,2))
+    console.log('----------------------------------')
+    console.log(arr.map( parseInt.bindRight(10) ))
+
+    // function myCurryAdd(fn) {
+    //   const length = fn.length;
+    //   while()
+    // }
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 相同的输入会有相同的输出
+    // 不依赖任何外部环境
+    // 不会对外部造成任何影响
+    const add = (a, b) => a + b;
+    add(1, 2)
+
+    let b = 20
+
+    const add1 = (a) => {
+      b = 30
+      return a + b
+    }
+    console.log(add1(123))
+    console.log(b)
+
+    // 不纯函数
+    Math.random()
+    new Date()
+
+    // 易于测试
+    // 结果缓存
+    // let cache = new Map()
+    // function meoryAdd(a, b) {
+    //   const key = JSON.stringify(Array.from(arguments))
+    //   if (cache.has(key)) {
+    //     return cache.get(key)
+    //   }
+    //   let res = a + b
+    //   cache.set(key, res)
+    //   return res
+    // }
+
+    const memoreize = function (fn) {
+      let cache = new Map()
+      return function () {
+        const key = JSON.stringify(Array.from(arguments))
+        if (cache.has(key)) {
+          return cache.get(key)
+        }
+        let res = fn(...arguments)
+        cache.set(key, res)
+        return res
+      }
+    }
+    const madd = memoreize(add)
+    console.log(madd(1,2))
+  </script>
+</body>
+
+</html>
