@@ -33,7 +33,7 @@ class Button extends React.Component {
     this.handleClick = this.handleClick.bind(this)
   }
   // render 高频刷新 不采用非静态函数
-  handleClick() {
+   handleClick() {
     console.log(this)
     console.log(this.state)
   }
