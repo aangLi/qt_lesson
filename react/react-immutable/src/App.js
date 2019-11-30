@@ -1,6 +1,10 @@
 import React from 'react';
 import logo from './logo.svg';
 import immutable from 'immutable'
+import Header from './Header.jsx'
+import Main from './Main.jsx'
+import Footer from './Footer.jsx'
+import RedColorWrapper from './RedColor'
 import './App.css';
 // 可变
 let a = [0, 1, 2]
@@ -10,10 +14,10 @@ let immutableArr = immutable.fromJS(
   [2, 3, 4]
 )
 let b = immutableArr.push(5);
-console.log(immutableArr.toJS())
-console.log(b.toJS())
+// console.log(immutableArr.toJS())
+// console.log(b.toJS())
 
-let obj = { 
+let obj = {
   a: 1,
   b: {
     c: 2
@@ -23,30 +27,39 @@ let obj = {
   }
 }
 
+
+
 let imObj = immutable.fromJS(obj)
 // obj.b && obj.b.c
-console.log(imObj.getIn(['b', 'c'], 'default'))
-let imObj1 = imObj.setIn(['d', 'e'], 'eee')
-console.log(imObj1.toJS())
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// console.log(imObj.getIn(['b', 'c'], 'default'))
+// let imObj1 = imObj.setIn(['d', 'e'], 'eee')
+// console.log(imObj1.toJS())
+
+class App extends React.Component {
+  state = {
+    store: imObj
+  }
+  handleSet = () => {
+    let store = this.state.store.setIn(['d', 'e'], '456')
+    this.setState({
+      store
+    })
+  }
+  render() {
+    const store = this.state.store
+    return (
+      <div>
+        <RedColorWrapper>
+          <p>123</p> 
+          <div>456</div>
+        </RedColorWrapper>
+        <button onClick={this.handleSet}>set d</button>
+        <Header value={store.get('a')} />
+        <Main value={store.get('b')} />
+        <Footer value={store.get('d')} />
+      </div>
+    )
+  }
 }
 
 export default App;
