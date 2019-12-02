@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var b = 10;
+    debugger;
+    (function b() {
+      // 内部作用域，会先去查找是有已有变量b的声明，有就直接赋值20，确实有了呀。发现了具名函数 function b(){}，拿此b做赋值；
+      // IIFE的函数无法进行赋值（内部机制，类似const定义的常量），所以无效。
+      // （这里说的“内部机制”，想搞清楚，需要去查阅一些资料，弄明白IIFE在JS引擎的工作方式，堆栈存储IIFE的方式等）
+      debugger;
+      b = 20; // 这一步失效
+      debugger;
+      console.log(b) // 
+      console.log(this)
+    })()
+  </script>
+</body>
+
+</html>
