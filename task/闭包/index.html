@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>  
+    function Bar() {
+      this.name = name
+    }
+    function makeFactor(name) {
+      var p = new Bar(name)
+      return function() {
+        return {
+          create: p,
+          destry: function() {
+            p = null;
+          }
+        }
+      }
+    }
+
+    var p1 = makeFactor('zhao')
+    var p2 = p1(); // 一直引用
+    console.log(p2.create)
+    p2.destry();
+    p2 = null;
+    // p2 = null;
+    // 外部的一直引用 内部的变量
+    // 引用计数
+    // 2
+    // window.p2
+  </script>
+</body>
+</html>
