@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
 
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -9,6 +10,31 @@ const routes = [
     path: '/',
     name: 'home',
     component: Home,
+  },
+  {
+    path: '/articles',
+    name: 'Articles',
+    component: () => import ('../views/Articles.vue')
+  },
+  {
+    path: '/archive',
+    name: 'Archive',
+    component: () => import ('../views/Archive.vue')
+  },
+  {
+    path: '/project',
+    name: 'Project',
+    component: () => import ('../views/Project.vue')
+  },
+  {
+    path: '/timeline',
+    name: 'Timeline',
+    component: () => import ('../views/Timeline.vue')
+  },
+  {
+    path: '/message',
+    name: 'Message',
+    component: () => import ('../views/Message.vue')
   },
   {
     path: '/about',

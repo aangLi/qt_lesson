@@ -13,10 +13,10 @@
               class="el-menu-demo"
               mode="horizontal"
               active-text-color="#409eff"
+              :default-active="navSelectIndex"
               :router="true"
-              @select="handleSelect"
             >
-              <el-menu-item v-for="item in list" :key="item.index" :index="item.index" :route="item.path">
+              <el-menu-item v-for="item in list" :key="item.index" :index="item.index" :route="item.path" >
                 {{item.name}}
               </el-menu-item>
             </el-menu>
@@ -36,7 +36,7 @@
 
 
 <script lang="ts">
-import { Vue, Component} from 'vue-property-decorator';
+import { Vue, Component, Prop, Watch} from 'vue-property-decorator';
 import RegisterAndLogin from './RegisterAndLogin.vue';
 import { NavListItem } from '../types/index';
 @Component({
@@ -45,6 +45,7 @@ import { NavListItem } from '../types/index';
   }
 })
 export default class Nav extends Vue{
+  private navSelectIndex: string = '';
   private list: Array<NavListItem> =[
     {
       index: "1",
@@ -84,15 +85,32 @@ export default class Nav extends Vue{
   ]
   private handleFlag: string = ''
   private visible: boolean = false
-  private handleSelect() {
+  @Prop({default: ''}) navSelect;
+  // nav 每次被加载的时候
+  mounted () {
+    console.log(this.navSelect)
+    this.handleSelect(this.navSelect)
   }
+
+  // nav 高亮
+  private handleSelect(path): void {
+    for (let i = 0; i < this.list.length; i ++) {
+      if (this.list[i].path === path) {
+        this.navSelectIndex = this.list[i].index;
+        return
+      }
+    }
+  }
+
+  // 登陆的点击
   private handleClick(value: string):void {
     this.handleFlag = value
     this.visible = true
     // console.log(this.visible)
   }
+
+  // 取消操作
   private handleCancel(value:boolean):void{
-    console.log(value)
     this.visible = value
   }
 }
@@ -145,6 +163,7 @@ export default class Nav extends Vue{
   width: 100%;
   border-bottom: 1px solid #eee;
   background-color: #fff;
+  box-sizing: border-box;
   .nav-content {
     width: 1200px;
     margin: 0 auto;
@@ -165,6 +184,7 @@ export default class Nav extends Vue{
   .nav-right {
     position: relative;
     padding-top: 15px;
+    padding-right: 60px;
     text-align: right;
     .el-dropdown {
       cursor: pointer;
