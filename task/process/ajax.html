@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 应用运行时， 本质就是cpu运行的权力， 分配资源的最小单元
+    // 进程是线程的容器
+    // 线程 CPU 计算的最小单元
+    // 单线程
+    var a = 1, b = 2, c = a + b;
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', 'http://localhost:1234');
+    xhr.send();
+    xhr.onload = (e) => { // 事件监听
+      console.log(e.target.response);
+    }
+    // UI 主要渲染
+    console.log('hello')
+  </script>
+</body>
+</html>
