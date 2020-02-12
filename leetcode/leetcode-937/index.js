@@ -8,22 +8,16 @@ var reorderLogFiles = function(logs) {
       return logs;
     }
     let numlogs = [], letterlogs = [], letterNum = [];
+    // console.log(logs.length)
     for (let i = 0; i < logs.length; i ++) {
-      let temp = logs[i].split(' ');
-      if(Number(temp[1])) {
+      let label = logs[i].split(' ', 1);
+      // console.log(label)
+      let content = logs[i].slice(label[0].length)
+      if(Number(content.charAt(1)) || Number(content.charAt(1)) === 0) {
         numlogs.push(logs[i]);
         continue;
       } else {
-        let label = 0;
-        for(let k = 0; k < temp[0].length; k++) {
-          label += charToNumber(temp[0].charAt(k));
-        }
-        let sum = charToNumber(temp[1]);
-        // for(let j = 1; j < temp.length; j ++) {
-        //   sum += charToNumber(temp[j]);
-        // }
-        letterNum.push({i: i, label: label, sum: sum});
-        
+        letterNum.push({i: i, label: label[0], content: content});
       }
       //  排序
      
@@ -31,61 +25,44 @@ var reorderLogFiles = function(logs) {
       // let tem = Number(temp[2])
       // console.log(tem)
     }
-    quick_sort(letterNum, 0, letterNum.length - 1)
-    console.log(letterNum)
-    for(let i = 0; i < letterNum.length; i++ ) {
-      // console.log(letterNum[i])
-      letterlogs.push(logs[letterNum[i].i]);
+    // console.log(numlogs)
+    let tem = quickSort(letterNum)
+    console.log(tem)
+    for(let i = 0; i < tem.length; i++ ) {
+      // console.log(tem[i])
+      letterlogs.push(logs[tem[i].i]);
     }
     return letterlogs.concat(numlogs);
 };
 
-/**
-题目：快速排序算法
-思路：两个哨兵，i,j,j从右边找比基数小的，i从左边找比基数大的，然后交换两个目标元素的位置，直到i=j,然后交换i和基数的位置，递归处理。
-**/
-function quick_sort(arr,from,to){
-	var i = from; //哨兵i
-	var j = to; //哨兵j
-	var key = arr[from]; //标准值
-  if(from >= to){ //如果数组只有一个元素
-    // console.log(i, j)
+function quickSort(arr){
+  if(arr.length === 0){
+      return [];
+  }
+  var left = [];
+  var right = [];
+  var pivot = arr[0];
 
-    // console.log(arr)
-	  return;
-	}
-	while(i < j){
-    while(arr[j].sum > key.sum && i < j ){ //从右边向左找第一个比key.sum小的数，找到或者两个哨兵相碰，跳出循环
-			j--;
-		}
-    while(arr[i].sum <= key.sum && i < j){  //从左边向右找第一个比key.sum大的数，找到或者两个哨兵相碰，跳出循环,这里的=号保证在本轮循环结束前，key.sum的位置不变，否则的话跳出循环，交换i和from的位置的时候，from位置的上元素有可能不是key
-      // if()
-      
-			i++;
-		}
-		/**
-		  代码执行道这里，1、两个哨兵到找到了目标值。2、j哨兵找到了目标值。3、两个哨兵都没找到(key是当前数组最小值)
-    **/
-   console.log(i, j)
-   console.log(arr)
-    if(i < j ){ //交换两个元素的位置
-      console.log(i, j)
-      console.log(arr)
-			var temp = arr[i];
-			arr[i] = arr[j];
-			arr[j] = temp;
-		}
+  for(var i = 1; i < arr.length; i++){
+      if(pivot.content.localeCompare(arr[i].content) > 0){
+          left.push(arr[i]);
+      } else if (pivot.content.localeCompare(arr[i].content) === 0) {
+        // console.log(arr)
+        if (pivot.label.localeCompare(arr[i].label) > 0) {
+          left.push(arr[i]);
+        } else {
+          right.push(arr[i]);
+        }
+      }
+      else{
+          right.push(arr[i]);
+      }
   }
-  if(!(arr[i].sum === key.sum && arr[i].label < key.label)) {
-	  arr[from] = arr[i] //
-	  arr[i] = key;
-  }
-  quick_sort(arr,from,i-1);
-	quick_sort(arr,i+1,to);
+  return quickSort(left).concat(pivot,quickSort(right));
 }
 
 function charToNumber(char) {
   return char.charCodeAt() - 0;
 }
 
-console.log(reorderLogFiles(["j mo", "5 m w", "g 07", "o 2 0", "t q h"]))
+console.log(reorderLogFiles(["a1 9 2 3 1","g1 act car","zo4 4 7","ab1 off key dog","a8 act zoo","a2 act car"]))
