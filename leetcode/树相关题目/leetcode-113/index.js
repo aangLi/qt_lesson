@@ -13,7 +13,7 @@
 var pathSum = function(root, sum) {
     let result = [];
     if(root === null)
-      return []];
+      return [];
     let queue = [];
     queue.push([root, [root.val], root.val]);
     while(queue.length) {
